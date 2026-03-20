@@ -115,7 +115,7 @@ class TenantController extends Controller
         // KPI: today's transactions count
         $todayTxCount = DB::table('transactions')
             ->where('tenant_id', $id)
-            ->whereRaw("DATE(created_at) = CURRENT_DATE")
+            ->whereRaw("created_at::date = CURRENT_DATE")
             ->count();
 
         // Recent 10 customers
